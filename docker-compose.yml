@@ -1,0 +1,35 @@
+version: '2'
+
+services:
+
+  node:
+    build: ./node
+    volumes_from:
+      - volumes_source
+    ports:
+      - "3000:3000"
+
+#    command: /bin/bash -c "eval < /etc/nginx/conf.d/mysite.template > /etc/nginx/conf.d/default.conf && nginx -g 'daemon off;'"
+
+  nginx:
+    build: ./nginx
+    volumes_from:
+      - volumes_source
+    volumes:
+      - ./logs/nginx/:/var/log/nginx
+    ports:
+      - "433:433"
+      - "80:80"
+    links:
+      - node:node
+
+  mongo:
+    image: mongo:latest
+    ports:
+      - "27017:27017"
+
+  volumes_source:
+    image: tianon/true
+    volumes:
+      - ./data/frontend:/var/www/frontend
+      - ./data/backend:/var/www/backend
