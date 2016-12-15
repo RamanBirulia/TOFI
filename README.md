@@ -1,4 +1,5 @@
-docker-compose build node
-docker-compose run node bash
+# TOFI APP main Repo
 
--com    
+For start application clone repo and run
+
+$ make build-app
