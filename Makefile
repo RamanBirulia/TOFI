@@ -46,6 +46,15 @@ build-app:
 
 	@make update-backend
 	@make update-frontend
+
+	@echo ""
+	@echo ""
+	@echo "\033[1mNow you will pull docker image.\033[0m"
+	@echo "It may needs some time."
+	@echo ""
+	@echo ""
+
+	@docker-compose build
 	@docker-compose up
 
 	@echo ""
