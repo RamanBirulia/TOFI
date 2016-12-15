@@ -1,2 +1,4 @@
-# TOFI
-TOFI project by 3 gues
+docker-compose build node
+docker-compose run node bash
+
+-com    
